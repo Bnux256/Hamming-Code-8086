@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-06-04T12:29:52.877Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="7PMcn3115llA9wqeoQks" version="14.7.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-04T13:00:00.481Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="4_3U8CiAxcBJiBjmID3X" version="14.7.4" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1504" dy="735" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2556" dy="1250" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -49,53 +49,53 @@
             <mxPoint x="1721.75" y="425" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-17" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-39" target="xXMIpHP0vvAsFntQTSwB-18">
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-17" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-39" target="xXMIpHP0vvAsFntQTSwB-138">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1721.75" y="521" as="sourcePoint" />
-            <mxPoint x="1721.25" y="556" as="targetPoint" />
+            <mxPoint x="1719" y="580" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-18" value="&lt;b&gt;Calculating p1 -&amp;nbsp;&lt;br&gt;&lt;/b&gt;Parity of (D3, D5, D7, D9, D11, D13, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1661.75" y="561" width="120" height="57" as="geometry" />
+          <mxGeometry x="1661.75" y="666" width="120" height="57" as="geometry" />
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-21" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-21" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-18" target="xXMIpHP0vvAsFntQTSwB-22">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1721.75" y="618" as="sourcePoint" />
-            <mxPoint x="1721.75" y="658" as="targetPoint" />
+            <mxPoint x="1718.75" y="727" as="sourcePoint" />
+            <mxPoint x="1718.75" y="767" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-22" value="&lt;b&gt;Calculating p2 -&amp;nbsp;&lt;/b&gt;&lt;br&gt;Parity of (D3, D6, D7, D10, D11, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1661.75" y="658" width="120" height="60" as="geometry" />
+          <mxGeometry x="1661.75" y="760" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-23" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-23" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-22" target="xXMIpHP0vvAsFntQTSwB-24">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1721.75" y="718" as="sourcePoint" />
-            <mxPoint x="1721.75" y="758" as="targetPoint" />
+            <mxPoint x="1718.75" y="827" as="sourcePoint" />
+            <mxPoint x="1718.75" y="867" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-24" value="&lt;b&gt;Calculating p3&lt;/b&gt;&lt;br&gt;Parity of (D5, D6, D7, D12, D13, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1661.75" y="758" width="120" height="60" as="geometry" />
+          <mxGeometry x="1661.75" y="858" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-25" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-25" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-24" target="xXMIpHP0vvAsFntQTSwB-26">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1721.75" y="818" as="sourcePoint" />
-            <mxPoint x="1721.75" y="858" as="targetPoint" />
+            <mxPoint x="1718.75" y="927" as="sourcePoint" />
+            <mxPoint x="1719" y="980" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-26" value="&lt;b&gt;Calculating p4 -&amp;nbsp;&lt;/b&gt;&lt;br&gt;Parity of (D9, D10, D11, D12, D13, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1661.75" y="858" width="120" height="60" as="geometry" />
+          <mxGeometry x="1661.75" y="960" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-35" value="Convert Hamming Code to string" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1661.75" y="953" width="120" height="60" as="geometry" />
+          <mxGeometry x="1661.75" y="1058" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-36" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="xXMIpHP0vvAsFntQTSwB-35">
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-36" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="xXMIpHP0vvAsFntQTSwB-35" source="xXMIpHP0vvAsFntQTSwB-26">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1721.75" y="918" as="sourcePoint" />
-            <mxPoint x="1431.75" y="1023" as="targetPoint" />
+            <mxPoint x="1718.75" y="1027" as="sourcePoint" />
+            <mxPoint x="1428.75" y="1132" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-37" value="Print &lt;br&gt;Hamming Code" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1661.75" y="1048" width="120" height="60" as="geometry" />
+          <mxGeometry x="1661.75" y="1161" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-38" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-35" target="xXMIpHP0vvAsFntQTSwB-37">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -121,26 +121,6 @@
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-47" value="Valid" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1691.75" y="525" width="40" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-50" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-37">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1670" y="510" as="sourcePoint" />
-            <mxPoint x="1520" y="120" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="2360" y="1090" />
-              <mxPoint x="2360" y="570" />
-              <mxPoint x="2370" y="120" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-51" value="" style="group" vertex="1" connectable="0" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1565" y="578" width="75" height="320" as="geometry" />
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-31" value="&lt;br&gt;We calculate every parity bit and add it to the Hamming Code" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="xXMIpHP0vvAsFntQTSwB-51">
-          <mxGeometry x="-45" y="133" width="120" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-32" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="xXMIpHP0vvAsFntQTSwB-51">
-          <mxGeometry x="55" width="20" height="320" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-52" value="Extra &lt;br&gt;Parity Bit" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1680" y="215" width="80" height="80" as="geometry" />
@@ -172,49 +152,49 @@
             <mxPoint x="2051.75" y="330" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-63" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-74" target="xXMIpHP0vvAsFntQTSwB-64">
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-63" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-140" target="xXMIpHP0vvAsFntQTSwB-64">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2051.75" y="426" as="sourcePoint" />
-            <mxPoint x="2051.25" y="461" as="targetPoint" />
+            <mxPoint x="2060.25" y="530" as="sourcePoint" />
+            <mxPoint x="2058.25" y="571.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-64" value="&lt;b&gt;Calculating p1 -&amp;nbsp;&lt;br&gt;&lt;/b&gt;Parity of (D3, D5, D7, D9, D11, D13, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1991.75" y="466" width="120" height="57" as="geometry" />
+          <mxGeometry x="1990.5" y="556" width="120" height="57" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-65" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2051.75" y="523" as="sourcePoint" />
-            <mxPoint x="2051.75" y="563" as="targetPoint" />
+            <mxPoint x="2050.5" y="613" as="sourcePoint" />
+            <mxPoint x="2050.5" y="653" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-66" value="&lt;b&gt;Calculating p2 -&amp;nbsp;&lt;/b&gt;&lt;br&gt;Parity of (D3, D6, D7, D10, D11, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1991.75" y="563" width="120" height="60" as="geometry" />
+          <mxGeometry x="1990.5" y="653" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-67" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-67" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="xXMIpHP0vvAsFntQTSwB-68">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2051.75" y="623" as="sourcePoint" />
-            <mxPoint x="2051.75" y="663" as="targetPoint" />
+            <mxPoint x="2050.5" y="713" as="sourcePoint" />
+            <mxPoint x="2050.5" y="753" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-68" value="&lt;b&gt;Calculating p3&lt;/b&gt;&lt;br&gt;Parity of (D5, D6, D7, D12, D13, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1991.75" y="663" width="120" height="60" as="geometry" />
+          <mxGeometry x="1990.25" y="758.75" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-69" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-69" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-68" target="xXMIpHP0vvAsFntQTSwB-70">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2051.75" y="723" as="sourcePoint" />
-            <mxPoint x="2051.75" y="763" as="targetPoint" />
+            <mxPoint x="2050.5" y="813" as="sourcePoint" />
+            <mxPoint x="2050.5" y="853" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-70" value="&lt;b&gt;Calculating p4 -&amp;nbsp;&lt;/b&gt;&lt;br&gt;Parity of (D9, D10, D11, D12, D13, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1991.75" y="763" width="120" height="60" as="geometry" />
+          <mxGeometry x="1990.5" y="865" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-71" value="&lt;b&gt;Calculating extra parity bit&amp;nbsp; - &lt;/b&gt;&lt;br&gt;Parity of entire data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1991.75" y="858" width="120" height="60" as="geometry" />
+          <mxGeometry x="1990.5" y="958" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-72" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="xXMIpHP0vvAsFntQTSwB-71">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2051.75" y="823" as="sourcePoint" />
-            <mxPoint x="1761.75" y="928" as="targetPoint" />
+            <mxPoint x="2050.5" y="913" as="sourcePoint" />
+            <mxPoint x="1760.5" y="1018" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-74" value="&amp;nbsp;Validating&amp;nbsp;&lt;br&gt;input" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
@@ -234,52 +214,33 @@
           <mxGeometry x="2111.75" y="304" width="60" height="20" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-77" value="Valid" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="2021.75" y="430" width="40" height="20" as="geometry" />
+          <mxGeometry x="2020" y="425" width="40" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-78" value="" style="group" vertex="1" connectable="0" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1895" y="483" width="75" height="417" as="geometry" />
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-79" value="&lt;br&gt;We calculate every parity bit and add it to the Hamming Code" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="xXMIpHP0vvAsFntQTSwB-78">
-          <mxGeometry x="-45" y="188.955625" width="120" height="39.09375" as="geometry" />
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-80" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="xXMIpHP0vvAsFntQTSwB-78">
-          <mxGeometry x="55" width="20" height="417" as="geometry" />
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-82" value="Allows..." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="2140" y="848" width="70" height="80" as="geometry" />
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-82" value="Extra parity bit allows to find (but not fix) a 2 bit error." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="2150" y="948" width="160" height="80" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-83" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-71" target="xXMIpHP0vvAsFntQTSwB-82">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2180" y="880" as="sourcePoint" />
-            <mxPoint x="2230" y="830" as="targetPoint" />
+            <mxPoint x="2178.75" y="970" as="sourcePoint" />
+            <mxPoint x="2147" y="978" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-84" value="Convert Hamming Code to string" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1991.75" y="940" width="120" height="60" as="geometry" />
+          <mxGeometry x="1990.25" y="1048" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-85" value="Print &lt;br&gt;Hamming Code" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1991.75" y="1013" width="120" height="60" as="geometry" />
+          <mxGeometry x="1992" y="1140" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-86" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-84" target="xXMIpHP0vvAsFntQTSwB-85">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="2081.75" y="915" as="sourcePoint" />
-            <mxPoint x="2081.75" y="950" as="targetPoint" />
+            <mxPoint x="2080.5" y="1005" as="sourcePoint" />
+            <mxPoint x="2080.5" y="1040" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-87" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-71" target="xXMIpHP0vvAsFntQTSwB-84">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1737.75" y="928" as="sourcePoint" />
-            <mxPoint x="1737.75" y="963" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-88" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-84" target="xXMIpHP0vvAsFntQTSwB-5">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1790" y="790" as="sourcePoint" />
-            <mxPoint x="1510" y="170" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="2280" y="970" />
-              <mxPoint x="2280" y="160" />
-            </Array>
+            <mxPoint x="1736.5" y="1018" as="sourcePoint" />
+            <mxPoint x="1736.5" y="1053" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-89" value="Extra &lt;br&gt;Pairty Bit" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
@@ -327,9 +288,6 @@
             <mxPoint x="1260" y="460" as="sourcePoint" />
             <mxPoint x="1260" y="560" as="targetPoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="xXMIpHP0vvAsFntQTSwB-103" value="&lt;font color=&quot;#cc0066&quot; size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 19px&quot;&gt;ADD INPUT CONVERTION&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1781.38" y="515" width="118.62" height="20" as="geometry" />
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-104" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-89">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -449,6 +407,36 @@
             <mxPoint x="1390" y="1225" as="sourcePoint" />
             <mxPoint x="1390" y="1260" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-138" value="Converting input to number" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1661.75" y="570" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-139" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-138" target="xXMIpHP0vvAsFntQTSwB-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1719" y="640" as="sourcePoint" />
+            <mxPoint x="1740" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-140" value="Converting input to number" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1992" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-143" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-74" target="xXMIpHP0vvAsFntQTSwB-140">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1810" y="540" as="sourcePoint" />
+            <mxPoint x="1860" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-79" value="&lt;br&gt;We calculate every parity bit and add it to the Hamming Code" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1870.25" y="769.205625" width="120" height="39.09375" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-80" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1957" y="569.5" width="20" height="417" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-31" value="&lt;br&gt;We calculate every parity bit and add it to the Hamming Code" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1526.62" y="825" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-32" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1626.62" y="680" width="20" height="320" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
