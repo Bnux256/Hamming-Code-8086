@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-06-04T06:27:51.013Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="JW2O2olwjklbaf_s8T1L" version="14.7.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-04T12:29:52.877Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="7PMcn3115llA9wqeoQks" version="14.7.4" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1221" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1504" dy="735" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -330,6 +330,125 @@
         </mxCell>
         <mxCell id="xXMIpHP0vvAsFntQTSwB-103" value="&lt;font color=&quot;#cc0066&quot; size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 19px&quot;&gt;ADD INPUT CONVERTION&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1781.38" y="515" width="118.62" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-104" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-89">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="920" y="290" as="sourcePoint" />
+            <mxPoint x="1170" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-105" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1180" y="240" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-107" value="Convert Input" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1200" y="561" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-108" value="&lt;b&gt;Validating p1 -&amp;nbsp;&lt;br&gt;&lt;/b&gt;Parity of (P1, D3, D5, D7, D9, D11, D13, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1200" y="640" width="120" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-109" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1260" y="697" as="sourcePoint" />
+            <mxPoint x="1260" y="737" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-110" value="&lt;b&gt;Validating p2 -&amp;nbsp;&lt;/b&gt;&lt;br&gt;Parity of (P2, D3, D6, D7, D10, D11, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1200" y="737" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-111" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1260" y="797" as="sourcePoint" />
+            <mxPoint x="1260" y="837" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-112" value="&lt;b&gt;Validating p3 -&amp;nbsp;&lt;/b&gt;Parity of (P3, D5, D6, D7, D12, D13, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1200" y="837" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-113" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1260" y="897" as="sourcePoint" />
+            <mxPoint x="1260" y="937" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-114" value="&lt;b&gt;Validating p4 -&amp;nbsp;&lt;/b&gt;&lt;br&gt;Parity of (P4, D9, D10, D11, D12, D13, D14, D15)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1200" y="937" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-119" value="" style="group" vertex="1" connectable="0" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1103.25" y="657" width="75" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-120" value="&lt;br&gt;We validate every parity bit and if its wrong we add its index to the sum of incorrect parity positions var" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-90;" vertex="1" parent="xXMIpHP0vvAsFntQTSwB-119">
+          <mxGeometry x="-54" y="133" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-121" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="xXMIpHP0vvAsFntQTSwB-119">
+          <mxGeometry x="55" width="20" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-122" value="Convert Hamming Code to string" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1099" y="1161" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-123" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="xXMIpHP0vvAsFntQTSwB-122" source="xXMIpHP0vvAsFntQTSwB-129">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1100" y="1120" as="sourcePoint" />
+            <mxPoint x="810" y="1225" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1260" y="1140" />
+              <mxPoint x="1159" y="1140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-124" value="Print &lt;br&gt;Hamming Code" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1099" y="1256" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-125" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-122" target="xXMIpHP0vvAsFntQTSwB-124">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1189" y="1136" as="sourcePoint" />
+            <mxPoint x="1189" y="1171" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-126" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-114">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1110" y="1010" as="sourcePoint" />
+            <mxPoint x="1260" y="1040" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-129" value="Is there an error?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1220" y="1038" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-130" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1200" y="1118" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-131" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-129">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1380" y="1160" as="sourcePoint" />
+            <mxPoint x="1360" y="1160" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1260" y="1140" />
+              <mxPoint x="1360" y="1140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-132" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1290" y="1118" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-133" value="Fixing the error" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1300" y="1161" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-134" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-133">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1360" y="1160" as="sourcePoint" />
+            <mxPoint x="1360" y="1250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-135" value="Convert Hamming Code to string" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1300" y="1250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-136" value="Print &lt;br&gt;Hamming Code" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1300" y="1345" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xXMIpHP0vvAsFntQTSwB-137" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="xXMIpHP0vvAsFntQTSwB-135" target="xXMIpHP0vvAsFntQTSwB-136">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1390" y="1225" as="sourcePoint" />
+            <mxPoint x="1390" y="1260" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
