@@ -1115,7 +1115,10 @@ case_2:
     mov ah, 09h
     int 21h
     
-    or hamming_code, extra_bit_mask ; flipping the error in the extra parity bit
+    ; fixing errror      
+    mov ax, hamming_code
+    mov fixed_hamming_code, ax
+    or fixed_hamming_code, extra_bit_mask ; flipping the error in the extra parity bit
     call SECED_to_string  ; convert to string    
     ; print new hamming code
     lea dx, fixed_SECED_string
