@@ -17,12 +17,13 @@ data segment
     p2_mask equ 0011001100110011b
     p3_mask equ 0000111100001111b
     p4_mask equ 0000000011111111b    
-    
+    cur_mask dw ?
     ; using masks to set parity bits in the number
     set_p1 equ 0100000000000000b
     set_p2 equ 0010000000000000b    
     set_p3 equ 0000100000000000b  
     set_p4 equ 0000000010000000b             
+    cur_setting_mask dw ?
     
     output_msg db "Your 15 bit Hamming Code Is: $"
     string_output db 16 dup(?)  
@@ -38,7 +39,8 @@ data segment
     
     ; Part 2 - Finding and fixing the error in 15 bit hamming code
     hamming_input db 19 dup(?)  
-    hamming_code dw ?  
+    hamming_code dw ?       
+    cur_parity_pos db 0
     hamming_input_msg db 0Dh, 0Ah, "Enter Your 15-Bit Hamming Code: $"
     not_valid_part2_msg db 0Dh, 0Ah, "The data must be 15 bits and only include 0's and 1's. Please try again:",'$'
     sum_of_incorrect_parity_pos db 0
@@ -292,40 +294,54 @@ return:
     ret
 endp convert_input  
 
+proc calculate_parity_bit
+    pusha   
+    ; jp only checks the first 8 bits so we devide the 16bit word into two parts and xor the result
+    ; calculating parity of first part
+    ; we use a mask to look only at the data bits that p1 covers   
+    mov bx, encoded_data
+    and bx, cur_mask
+    or  bx, 0 ; seting the flags 
+    jp part1_parity1 ; jumps if pf = 1  
+    mov dl, 0 ; else (pf is zero)  
+    jmp calculating_secondPart 
+part1_parity1:    
+    mov dl, 1 
+    jmp calculating_secondPart
+calculating_secondPart:    
+    mov bx, encoded_data ;creating a dup of encoded data
+    and bx, cur_mask ; putting the mask 
+    shr bx, 8 ; moving to right the dup of encoded_data  
+    or bx, 0 ; setting the flags
+    jp part2_pairty1 ; jumps if pf = 1
+    mov dh, 0
+    jmp combining_parity
+part2_pairty1:
+    mov dh, 1  
+    jmp combining_parity 
+combining_parity:    
+    xor dh, dl  ; parity bit is in dh 
+    ; after calculating the parity bit we add it back to the orignal number
+    ; if parity bit is 1 --> set the parity bit
+    cmp dh, 1
+    je set_parity
+    ; parity bit is 0
+    popa
+    ret 
+set_parity:         
+    mov ax, cur_setting_mask
+    or encoded_data, ax
+    popa
+    ret
+endp calculate_parity_bit    
+   
 proc calculate_p1
     pusha              
     ; if we number the bit position from 1b to 1111b --> Parity bit 1 covers all bit positions which have the least significant bit set: 
     ; p1 = parity of (D3, D5, D7, D9, D11, D13, D15)                                                                                       
-    ; we use a mask to look only at the data bits that p1 covers   
-    mov bx, encoded_data
-    and bx, p1_mask
-    or  bx, 0 ; seting the flags
-    ; jp only checks the first 8 bits so we devide the 16bit word into two parts and xor the result 
-    jp p1_1 ; jumps if pf = 1  
-    mov dl, 0
-    jmp p1_0 ; else (p1 is zero) 
-p1_1:    
-    mov dl, 1
-p1_0:    
-    mov bx, encoded_data ;creating a dup of encoded data
-    and bx, p1_mask ; putting the mask 
-    shr bx, 8 ; moving to right the dup of encoded_data  
-    or bx, 0 ; setting the flags
-    jp p1_2 ; jumps if pf = 1
-    mov dh, 0
-    jmp p1_0_1
-p1_2:
-    mov dh, 1
-p1_0_1:        
-    xor dh, dl  ; parity bit is in dh 
-    ; after calculating the parity bit we add it back to the orignal number
-    ; if p1 is 1 --> set the parity bit
-    cmp dh, 1
-    je set_p1
-    jmp p1_0_2 ; p1 is 0
-set_p1:
-    or encoded_data, set_p1
-p1_0_2:
+    mov cur_mask, p1_mask
+    mov cur_setting_mask, set_p1
+    call calculate_parity_bit
     popa 
     ret
 endp calculate_p1
@@ -334,37 +350,9 @@ proc calculate_p2
     pusha
     ; if we number the bit position from 1b to 1111b --> Parity bit 2 covers all bit positions which have the second least significant bit set:
     ; p2 = parity of (D3, D6, D7, D10, D11, D14, D15)
-    ; we use the mask to isolate the data bits that p2 covers   
-    mov bx, encoded_data
-    and bx, p2_mask
-    or  bx, 0 ; seting the flags
-    ; jp only checks the first 8 bits so we devide the 16bit word into two parts and xor the result 
-    jp p2_1 ; jumps if pf = 1  
-    mov dl, 0
-    jmp exit4
-p2_1:    
-    mov dl, 1
-exit4:    
-    mov bx, encoded_data ;creating a dup of encoded data
-    and bx, p2_mask ; putting the mask 
-    shr bx, 8 ; moving to right the dup of encoded_data  
-    or bx, 0 ; setting the flags
-    jp p2_2 ; jumps if pf = 1
-    mov dh, 0
-    jmp exit5
-p2_2:
-    mov dh, 1
-exit5:        
-    xor dh, dl  ; parity bit is in dh 
-    ; after calculating the parity bit we add it back to the orignal number
-    ; if p1 is 1 --> set the parity bit
-    cmp dh, 1
-    je set_p2
-    jmp exit6
-set_p2:
-    or encoded_data, set_p2
-exit6:
-      
+    mov cur_mask, p2_mask
+    mov cur_setting_mask, set_p2
+    call calculate_parity_bit
     popa
     ret
 endp calculate_p2 
@@ -373,78 +361,22 @@ proc calculate_p3
     pusha
     ; if we number the bit position from 1b to 1111b --> Parity bit 3 covers all bit positions which have the third least significant bit set:
     ; p3 = parity of (D5, D6, D7, D12, D13, D14, D15)
-    ; we use the mask to isolate the data bits that p2 covers   
-    mov bx, encoded_data
-    and bx, p3_mask
-    or  bx, 0 ; seting the flags
-    ; jp only checks the first 8 bits so we devide the 16bit word into two parts and xor the result 
-    jp p3_1 ; jumps if pf = 1  
-    mov dl, 0
-    jmp exit7
-p3_1:    
-    mov dl, 1
-exit7:    
-    mov bx, encoded_data ;creating a dup of encoded data
-    and bx, p3_mask ; putting the mask 
-    shr bx, 8 ; moving to right the dup of encoded_data  
-    or bx, 0 ; setting the flags
-    jp p3_2 ; jumps if pf = 1
-    mov dh, 0
-    jmp exit8
-p3_2:
-    mov dh, 1
-exit8:        
-    xor dh, dl  ; parity bit is in dh 
-    ; after calculating the parity bit we add it back to the orignal number
-    ; if p1 is 1 --> set the parity bit
-    cmp dh, 1
-    je set_p3
-    jmp exit9
-set_p3:
-    or encoded_data, set_p3
-exit9:   
+    mov cur_mask, p3_mask
+    mov cur_setting_mask, set_p3
+    call calculate_parity_bit  
     popa
-    ret                    
-        
+    ret                         
 endp calculate_p3   
 
 proc calculate_p4
     pusha
     ; if we number the bit position from 1b to 1111b --> Parity bit 3 covers all bit positions which have the third least significant bit set:
     ; p4 = parity of (D9, D10, D11, D12, D13, D14, D15)
-    ; we use the mask to isolate the data bits that p2 covers   
-    mov bx, encoded_data
-    and bx, p4_mask
-    or  bx, 0 ; seting the flags
-    ; jp only checks the first 8 bits so we devide the 16bit word into two parts and xor the result 
-    jp p4_1 ; jumps if pf = 1  
-    mov dl, 0
-    jmp exit10
-p4_1:    
-    mov dl, 1
-exit10:    
-    mov bx, encoded_data ;creating a dup of encoded data
-    and bx, p4_mask ; putting the mask 
-    shr bx, 8 ; moving to right the dup of encoded_data  
-    or bx, 0 ; setting the flags
-    jp p4_2 ; jumps if pf = 1
-    mov dh, 0
-    jmp exit11
-p4_2:
-    mov dh, 1
-exit11:        
-    xor dh, dl  ; parity bit is in dh 
-    ; after calculating the parity bit we add it back to the orignal number
-    ; if p1 is 1 --> set the parity bit
-    cmp dh, 1
-    je set_p4
-    jmp exit12
-set_p4:
-    or encoded_data, set_p4
-exit12:    
+    mov cur_mask, p4_mask
+    mov cur_setting_mask, set_p4
+    call calculate_parity_bit    
     popa
-    ret                    
-        
+    ret                        
 endp calculate_p4   
 
 proc convert_to_string
@@ -799,152 +731,90 @@ loop hamming_convert
     popa
     ret
 endp convert_haming_input    
-    
-proc validating_p1
+
+proc validating_parity_bit
     pusha
-    ; we use a mask to look only at the bits that p1    
-    ; p1 = parity of (P1, D3, D5, D7, D9, D11, D13, D15)    
+    ; jp only checks the first 8 bits so we devide the 16bit word into two parts and xor the result
+    ; calculating parity of first part
+    ; we use a mask to look only at the data bits that p1 covers   
     mov bx, hamming_code
-    and bx, p1_mask     
-    mov sum_of_incorrect_parity_pos, 0 ; resetting the var at the start of each run of the project
-    or bx, 0 ; setting the flags 
-    jp validating_p1_1 ; jumps if pf = 1
-    mov dl, 0
-    jmp validating_p1_0 ; else (p1 is zero)
-validating_p1_1:
-    mov dl, 1
-validating_p1_0:
-    ; jump parity only checks the first 8 bits so we devide the 16-bit word into two 8 bit parts and xor the result        
-    mov bx, hamming_code ; creating dup of inputed hamming code
-    and bx, p1_mask ; putting the mask on bx
-    shr bx, 8 ; moving to right in order to look only at second half
+    and bx, cur_mask
+    or  bx, 0 ; seting the flags 
+    jp part1__parity1 ; jumps if pf = 1  
+    mov dl, 0 ; else (pf is zero)  
+    jmp calculating__secondPart 
+part1__parity1:    
+    mov dl, 1 
+    jmp calculating__secondPart
+calculating__secondPart:    
+    mov bx, hamming_code ;creating a dup of encoded data
+    and bx, cur_mask ; putting the mask 
+    shr bx, 8 ; moving to right the dup of encoded_data  
     or bx, 0 ; setting the flags
-    jp validating_p1_2 ; jumps if pf = 1
-    mov dh, 0  
-    jmp validating_p1_0_1
-validating_p1_2:
-    mov dh, 1
-validating_p1_0_1:
-    xor dh, dl ; parity bit is in dh   
+    jp part2__pairty1 ; jumps if pf = 1
+    mov dh, 0
+    jmp combining__parity
+part2__pairty1:
+    mov dh, 1  
+    jmp combining__parity 
+combining__parity:    
+    xor dh, dl  ; parity bit is in dh 
     ; because we included the parity bit itself when calculating the new parity bit --> if its 0: its correct. if its 1: its incorrect
     ; now we check if the parity bit we calculated in dh is 1:
     cmp dh, 1
-    je p1_dh_1  
-    popa  ; else we ret
+    je add_parity_pos
+    ; parity is correct
+    popa
+    ret 
+add_parity_pos:  ; parity wrong       
+    mov ax, cur_setting_mask                   
+    mov al, cur_parity_pos
+    add sum_of_incorrect_parity_pos, al ; we add the wrong parity bit pos to the sum_of_incorrect_parity_pos var 
+    popa
     ret
-p1_dh_1:  ; if it jumps it means that p1 is wrong
-    add sum_of_incorrect_parity_pos, 1 ; we add the wrong parity bit pos to the sum_of_incorrect_parity_pos var 
+endp validating_parity_bit
+
+proc validating_p1
+    pusha   
+    ; p1 = parity of (P1, D3, D5, D7, D9, D11, D13, D15)    
+    mov sum_of_incorrect_parity_pos, 0   
+    mov cur_parity_pos, 1
+    mov cur_mask, p1_mask
+    mov cur_setting_mask, set_p1
+    call validating_parity_bit
     popa
     ret
 endp validating_p1
 
 proc validating_p2
-    pusha         
-    ; we use a mask to look only at the bits that p1    
+    pusha           
     ; p2 = parity of (P2, D3, D6, D7, D10, D11, D14, D15)      
-    mov bx, hamming_code
-    and bx, p2_mask
-    or bx, 0 ; setting the flags 
-    jp validating_p2_1 ; jumps if pf = 1
-    mov dl, 0
-    jmp validating_p2_0 ; else (p2 is zero)
-validating_p2_1:
-    mov dl, 1
-validating_p2_0:
-    ; jump parity only checks the first 8 bits so we devide the 16-bit word into two 8 bit parts and xor the result        
-    mov bx, hamming_code ; creating dup of inputed hamming code
-    and bx, p2_mask ; putting the mask on bx
-    shr bx, 8 ; moving to right in order to look only at second half
-    or bx, 0 ; setting the flags
-    jp validating_p2_2 ; jumps if pf = 1
-    mov dh, 0  
-    jmp validating_p2_0_1
-validating_p2_2:
-    mov dh, 1
-validating_p2_0_1:
-    xor dh, dl ; parity bit is in dh   
-    ; because we included the parity bit itself when calculating the new parity bit --> if its 0: its correct. if its 1: its incorrect
-    ; now we check if the parity bit we calculated in dh is 1:
-    cmp dh, 1
-    je p2_dh_1  
-    popa
-    ret
-p2_dh_1:  ; if it jumps it means that p2 is wrong
-    add sum_of_incorrect_parity_pos, 2 ; we add the wrong parity bit pos to the sum_of_incorrect_parity_pos var 
+    mov cur_parity_pos, 2
+    mov cur_mask, p2_mask
+    mov cur_setting_mask, set_p2
+    call validating_parity_bit
     popa
     ret
 endp validating_p2   
 
 proc validating_p3
-    pusha         
-    ; we use a mask to look only at the bits that p1    
-    ; p3 = parity of (P3, D5, D6, D7, D12, D13, D14, D15)      
-    mov bx, hamming_code
-    and bx, p3_mask
-    or bx, 0 ; setting the flags 
-    jp validating_p3_1 ; jumps if pf = 1
-    mov dl, 0
-    jmp validating_p3_0 ; else (p3 is zero)
-validating_p3_1:
-    mov dl, 1
-validating_p3_0:
-    ; jump parity only checks the first 8 bits so we devide the 16-bit word into two 8 bit parts and xor the result        
-    mov bx, hamming_code ; creating dup of inputed hamming code
-    and bx, p3_mask ; putting the mask on bx
-    shr bx, 8 ; moving to right in order to look only at second half
-    or bx, 0 ; setting the flags
-    jp validating_p3_2 ; jumps if pf = 1
-    mov dh, 0  
-    jmp validating_p3_0_1
-validating_p3_2:
-    mov dh, 1
-validating_p3_0_1:
-    xor dh, dl ; parity bit is in dh   
-    ; because we included the parity bit itself when calculating the new parity bit --> if its 0: its correct. if its 1: its incorrect
-    ; now we check if the parity bit we calculated in dh is 1:
-    cmp dh, 1
-    je p3_dh_1 
+    pusha          
+    ; p3 = parity of (P4, D5, D6, D7, D12, D13, D14, D15)      
+    mov cur_parity_pos, 4
+    mov cur_mask, p3_mask
+    mov cur_setting_mask, set_p3
+    call validating_parity_bit 
     popa 
-    ret
-p3_dh_1:  ; if it jumps it means that p3 is wrong
-    add sum_of_incorrect_parity_pos, 4 ; we add the wrong parity bit pos to the sum_of_incorrect_parity_pos var 
-    popa
     ret
 endp validating_p3                
 
 proc validating_p4
     pusha         
-    ; we use a mask to look only at the bits that p1    
     ; p4 = parity of (P8, D9, D10, D11, D12, D13, D14, D15)      
-    mov bx, hamming_code
-    and bx, p4_mask
-    or bx, 0 ; setting the flags 
-    jp validating_p4_1 ; jumps if pf = 1
-    mov dl, 0
-    jmp validating_p4_0 ; else (p4 is zero)
-validating_p4_1:
-    mov dl, 1
-validating_p4_0:
-    ; jump parity only checks the first 8 bits so we devide the 16-bit word into two 8 bit parts and xor the result        
-    mov bx, hamming_code ; creating dup of inputed hamming code
-    and bx, p4_mask ; putting the mask on bx
-    shr bx, 8 ; moving to right in order to look only at second half
-    or bx, 0 ; setting the flags
-    jp validating_p4_2 ; jumps if pf = 1
-    mov dh, 0  
-    jmp validating_p4_0_1
-validating_p4_2:
-    mov dh, 1
-validating_p4_0_1:
-    xor dh, dl ; parity bit is in dh   
-    ; because we included the parity bit itself when calculating the new parity bit --> if its 0: its correct. if its 1: its incorrect
-    ; now we check if the parity bit we calculated in dh is 1:
-    cmp dh, 1
-    je p4_dh_1  
-    popa
-    ret
-p4_dh_1:  ; if it jumps it means that p4 is wrong
-    add sum_of_incorrect_parity_pos, 8 ; we add the wrong parity bit pos to the sum_of_incorrect_parity_pos var 
+    mov cur_parity_pos, 8
+    mov cur_mask, p4_mask
+    mov cur_setting_mask, set_p4
+    call validating_parity_bit
     popa
     ret
 endp validating_p4 
