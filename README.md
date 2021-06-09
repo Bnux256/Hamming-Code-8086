@@ -11,7 +11,7 @@ Finally, he invented an algorithm that uses parity bits located in numbers that 
 appears is even or odd. Each bit in the given codeword is covered by at least 2 parity bits. 
 Therefore, it is possible to verify which relationship bits are incorrect, their amount will indicate the position of the incorrect bit. With the help of the relationship bits it is possible to identify if there is an error, and to correct it.
 
-## Example
+## Example - 
 Bit Number | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15
 -----------|---|---|---|---|---|---|---|---|---|----|----|----|----|----|----
 Original Msg. | P1 | P2 | 0 | P4 | 1 | 1 | 0 | P4 | 1 | 0 | 0 | 1 | 1 | 0 | 0
@@ -33,4 +33,6 @@ Normally, Hamming Codes can only correct a single error in the codeword, as it c
 * Some bit is wrong + extra bit is correct --> unfixable double bit error
 
 ## Flow Chart - 
+<img align="center" src = "https://github.com/Bnux256/HammingCode-11-15--8086/blob/main/ProjectDiagram.png?raw=true">
 
+## Reference Material
