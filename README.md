@@ -23,7 +23,7 @@ When running the program you will be prompted to choose between 2 options:
 * The first will allow the user to enter data that is 11 bits and the program will return its 15 bit Hamming Code, with four added parity bits. 
 * The other option allows the user to enter a 15 bit Hamming Code, and it will print if there was any error in the data and return the corrected Hamming Code.
 * The user can also choose to generate or correct a SECDED Hamming Code with an extra parity bit.
-
+<img align="center" src = "https://user-images.githubusercontent.com/80382873/121419679-e3319980-c974-11eb-8607-40599763e426.png">
 ## SECDED Hamming Code
 Normally, Hamming Codes can only correct a single error in the codeword, as it can’t distinguish a double error from a single bit error of a different codeword. If the codeword is 111111111111111, and the delivered message is 1101011111111111, the algorithm will return that bit 6 is wrong, instead of bits 3 and 5. Adding an additional parity bit that covers the entire codeword will make it possible to know whether there is a double-bit error.
 #### There are four possible cases:
