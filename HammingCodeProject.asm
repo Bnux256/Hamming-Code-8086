@@ -13,16 +13,16 @@ data segment
     encoded_data dw ?     
     
     ; using masks to isolate the data bits that each parity bit covers
-    p1_mask equ 0101010101010101b
-    p2_mask equ 0011001100110011b
-    p3_mask equ 0000111100001111b
-    p4_mask equ 0000000011111111b    
+    P1_MASK equ 0101010101010101b
+    P2_MASK equ 0011001100110011b
+    P3_MASK equ 0000111100001111b
+    P4_MASK equ 0000000011111111b    
     cur_mask dw ?
     ; using masks to set parity bits in the number
-    set_p1 equ 0100000000000000b
-    set_p2 equ 0010000000000000b    
-    set_p3 equ 0000100000000000b  
-    set_p4 equ 0000000010000000b             
+    SET_P1 equ 0100000000000000b
+    SET_P2 equ 0010000000000000b    
+    SET_P3 equ 0000100000000000b  
+    SET_P4 equ 0000000010000000b             
     cur_setting_mask dw ?
     
     output_msg db "Your 15 bit Hamming Code Is: $"
@@ -50,15 +50,15 @@ data segment
     fix_error dw ?                          
     fixed_hamming_string db 15 dup(?), '$'  
     
-    ; Part 2A - Fixing an error and finding 2 errors in SECED Hamming Code 
-    SECED_input db 20 dup(?)
-    SECED_input_msg db 0Dh, 0Ah, "Enter Your 16-Bit Hamming Code: $" 
-    SECED_not_valid_msg db 0Dh, 0Ah, "The data must be 16 bits and only include 0's and 1's. Please try again:",'$'
+    ; Part 2A - Fixing an error and finding 2 errors in SECDED Hamming Code 
+    secded_input db 20 dup(?)
+    secded_input_msg db 0Dh, 0Ah, "Enter Your 16-Bit Hamming Code: $" 
+    secded_not_valid_msg db 0Dh, 0Ah, "The data must be 16 bits and only include 0's and 1's. Please try again:",'$'
     extra_bit_wrong_msg db 0Dh, 0Ah, "The extra parity bit is wrong. The correct Hamming Code is: $"
     extra_bit db 0                
     is_extra_bit_correct db 0
     cant_correct_errors_msg db 0Dh, 0Ah, "The received data contains a double bit error that can't be corrected. $"      
-    fixed_SECED_string db 16 dup(?), '$'
+    fixed_secded_string db 16 dup(?), '$'
 ends
 
 stack segment
@@ -74,7 +74,7 @@ start:
 
     ; add your code here    
      call welcome_msg ; printing welcome messages
-    ; call decoding_SECED_hamming
+    ; call decoding_secded_hamming
     ; to-do list               
     ; add progress bar/msg/moving slash/ [**   ] 25%
     ; part 1 - change jmp exit names   
@@ -339,8 +339,8 @@ proc calculate_p1
     pusha              
     ; if we number the bit position from 1b to 1111b --> Parity bit 1 covers all bit positions which have the least significant bit set: 
     ; p1 = parity of (D3, D5, D7, D9, D11, D13, D15)                                                                                       
-    mov cur_mask, p1_mask
-    mov cur_setting_mask, set_p1
+    mov cur_mask, P1_MASK
+    mov cur_setting_mask, SET_P1
     call calculate_parity_bit
     popa 
     ret
@@ -350,8 +350,8 @@ proc calculate_p2
     pusha
     ; if we number the bit position from 1b to 1111b --> Parity bit 2 covers all bit positions which have the second least significant bit set:
     ; p2 = parity of (D3, D6, D7, D10, D11, D14, D15)
-    mov cur_mask, p2_mask
-    mov cur_setting_mask, set_p2
+    mov cur_mask, P2_MASK
+    mov cur_setting_mask, SET_P2
     call calculate_parity_bit
     popa
     ret
@@ -361,8 +361,8 @@ proc calculate_p3
     pusha
     ; if we number the bit position from 1b to 1111b --> Parity bit 3 covers all bit positions which have the third least significant bit set:
     ; p3 = parity of (D5, D6, D7, D12, D13, D14, D15)
-    mov cur_mask, p3_mask
-    mov cur_setting_mask, set_p3
+    mov cur_mask, P3_MASK
+    mov cur_setting_mask, SET_P3
     call calculate_parity_bit  
     popa
     ret                         
@@ -372,8 +372,8 @@ proc calculate_p4
     pusha
     ; if we number the bit position from 1b to 1111b --> Parity bit 3 covers all bit positions which have the third least significant bit set:
     ; p4 = parity of (D9, D10, D11, D12, D13, D14, D15)
-    mov cur_mask, p4_mask
-    mov cur_setting_mask, set_p4
+    mov cur_mask, P4_MASK
+    mov cur_setting_mask, SET_P4
     call calculate_parity_bit    
     popa
     ret                        
@@ -409,7 +409,7 @@ proc print_hamming_code
     mov ah, 03h
     int 10h
     ; setting cursor position     
-    add dh, 2 
+    add dh, 1
     mov dl, 0
     mov ah, 02h
     int 10h 
@@ -556,12 +556,13 @@ extra_bit_exit_carry1:
 endp convert_to_string_extra_bit 
 
 proc print_hamming_code_extra_bit
-    pusha
+    pusha 
+    
     ; getting cursor position
     mov ah, 03h
     int 10h
     ; setting cursor position     
-    add dh, 2 
+    add dh, 1 
     mov dl, 0
     mov ah, 02h
     int 10h 
@@ -614,9 +615,9 @@ proc y/n_part2
     int 21h ; input in al
     
     cmp al, 'y'
-    je decoding_SECED_hamming
+    je decoding_secded_hamming
     cmp al, 'Y'
-    je decoding_SECED_hamming
+    je decoding_secded_hamming
     cmp al, 'n'
     je fixing_hamming_code
     cmp al, 'N'
@@ -779,8 +780,8 @@ proc validating_p1
     ; p1 = parity of (P1, D3, D5, D7, D9, D11, D13, D15)    
     mov sum_of_incorrect_parity_pos, 0   
     mov cur_parity_pos, 1
-    mov cur_mask, p1_mask
-    mov cur_setting_mask, set_p1
+    mov cur_mask, P1_MASK
+    mov cur_setting_mask, SET_P1
     call validating_parity_bit
     popa
     ret
@@ -790,8 +791,8 @@ proc validating_p2
     pusha           
     ; p2 = parity of (P2, D3, D6, D7, D10, D11, D14, D15)      
     mov cur_parity_pos, 2
-    mov cur_mask, p2_mask
-    mov cur_setting_mask, set_p2
+    mov cur_mask, P2_MASK
+    mov cur_setting_mask, SET_P2
     call validating_parity_bit
     popa
     ret
@@ -801,8 +802,8 @@ proc validating_p3
     pusha          
     ; p3 = parity of (P4, D5, D6, D7, D12, D13, D14, D15)      
     mov cur_parity_pos, 4
-    mov cur_mask, p3_mask
-    mov cur_setting_mask, set_p3
+    mov cur_mask, P3_MASK
+    mov cur_setting_mask, SET_P3
     call validating_parity_bit 
     popa 
     ret
@@ -812,8 +813,8 @@ proc validating_p4
     pusha         
     ; p4 = parity of (P8, D9, D10, D11, D12, D13, D14, D15)      
     mov cur_parity_pos, 8
-    mov cur_mask, p4_mask
-    mov cur_setting_mask, set_p4
+    mov cur_mask, P4_MASK
+    mov cur_setting_mask, SET_P4
     call validating_parity_bit
     popa
     ret
@@ -922,40 +923,40 @@ exit_convertion:
     ret
 endp hamming_to_string
 
-; Part 2A - Correcting 1 error and finding 2 errors in SECED Hamming Code
-proc decoding_SECED_hamming
+; Part 2A - Correcting 1 error and finding 2 errors in secded Hamming Code
+proc decoding_secded_hamming
     pusha
-    ; in order to calculate SECED Hamming code we first verify the hamming code
+    ; in order to calculate secded Hamming code we first verify the hamming code
     ; then we verify the extra parity bit
     ; if some bit is wrong, and the extra bit is wrong, then its a 1 bit error, and we can correct it like regular
     ; if some bit is wrong but the extra parity bit is correct, then its a double error that we can't correct
-    call SECED_inputs
-    call SECED_input_check  
-    call convert_SECED_input
+    call secded_inputs
+    call secded_input_check  
+    call convert_secded_input
     call validating_p1 
     call validating_p2 
     call validating_p3
     call validating_p4     
     call validating_extra_bit   
-    call fixing_SECED_hamming    
+    call fixing_secded_hamming    
     
     ; call printing_wrong_data_msg  
     
     jmp welcome_msg ; run again 
     popa
     ret
-endp decoding_SECED_hamming
+endp decoding_secded_hamming
 
-proc SECED_inputs
+proc secded_inputs
     pusha  
-    ; Getting 16-bit SECED Hamming Code
+    ; Getting 16-bit secded Hamming Code
     ; printing welcome msg
-    lea dx, SECED_input_msg
+    lea dx, secded_input_msg
     mov ah, 09h
     int 21h
     
     ; getting the inputs
-    lea dx, SECED_input
+    lea dx, secded_input
     mov bx, dx
     mov [byte ptr bx], 17
     mov ah, 0Ah
@@ -966,21 +967,21 @@ proc SECED_inputs
     mov cl, 16       
     mov dx, '0' ;ascii value of 0
 remove_ascii_p3:       
-    lea bx, [SECED_input+1]
+    lea bx, [secded_input+1]
     xor ch, ch
     add bx, cx
     sub [bx], dx
     loop remove_ascii_p3 
     popa
     ret
-endp SECED_inputs
+endp secded_inputs
 
-proc SECED_input_check
+proc secded_input_check
     pusha
     mov cx, 16
     mov dx, '0'
 dig_valid:   ; making sure that the input is the right length and is binary
-    lea bx, [SECED_input+1]
+    lea bx, [secded_input+1]
     add bx, cx
     cmp [bx], 1
     jne cur_dig_not_1   ; if not 1   
@@ -990,18 +991,18 @@ cur_dig_not_1:
     jne cur_dig_not_0 ; and not 0   
     jmp cur_dig_1
 cur_dig_not_0:
-    call SECED_not_valid        
+    call secded_not_valid        
 cur_dig_1:    
     loop dig_valid    
     popa
     ret
-endp SECED_input_check    
+endp secded_input_check    
 
-proc SECED_not_valid
+proc secded_not_valid
     pusha
     ; this proc is used when the input isn't valid 
     ; not valid msg
-    lea dx, SECED_not_valid_msg
+    lea dx, secded_not_valid_msg
     mov ah, 09h
     int 21h 
     
@@ -1010,33 +1011,33 @@ proc SECED_not_valid
     mov ah, 09h
     int 21h
     
-    jmp decoding_SECED_hamming ; return to start of proc because of the non_valid input
+    jmp decoding_secded_hamming ; return to start of proc because of the non_valid input
     
     popa
     ret
-endp SECED_not_valid  
+endp secded_not_valid  
 
-proc convert_SECED_input
+proc convert_secded_input
     pusha          
     mov hamming_code, 0 ; clearing hamming_code from last runs
     ; we will convert the input from int array to 2 byte var
     mov cx, 15
-    lea DI, SECED_input[2]                                        
-SECED_convert:                    
+    lea DI, secded_input[2]                                        
+secded_convert:                    
     ; we copy a digit to the new var
     mov bx, [DI]
     xor bh, bh   
     add hamming_code, bx
     shl hamming_code, 1
     inc DI     
-loop SECED_convert  
+loop secded_convert  
     ; copying the last element manually and not shifting the var
     mov bx, [DI] 
     xor bh, bh   
     add hamming_code, bx
     popa
     ret
-endp convert_SECED_input   
+endp convert_secded_input   
 
 proc validating_extra_bit
     pusha   
@@ -1044,35 +1045,35 @@ proc validating_extra_bit
     mov bx, hamming_code ; dup of hamming_input
     shl bx, 1 ; erasing the leftmost extra parity bit - not to ruin new parity check
     or bx, 0 ; setting the flags
-    jp SECED_lower_parity_1 ;  jp only checks the first 8 bits so we devide the 16 bit word into two parts and xor the result  
+    jp secded_lower_parity_1 ;  jp only checks the first 8 bits so we devide the 16 bit word into two parts and xor the result  
     mov dl, 0 ; coping the parity of the lower part to dl
-    jmp SECED_higher_part_parity
-SECED_lower_parity_1: 
+    jmp secded_higher_part_parity
+secded_lower_parity_1: 
     mov dl, 1 ; coping the parity of the lower part to dl
-    jmp SECED_higher_part_parity
-SECED_higher_part_parity: 
+    jmp secded_higher_part_parity
+secded_higher_part_parity: 
     shr bx, 8 
     or bx, 0 ; setting flags
-    jp SECED_higher_parity_1
+    jp secded_higher_parity_1
     mov dh, 0 ; coping the parity of the higher part to dh  
-    jmp SECED_set_extra_bit
-SECED_higher_parity_1:
+    jmp secded_set_extra_bit
+secded_higher_parity_1:
     mov dh, 1 ; coping the parity of the higher part to dh    
-    jmp SECED_set_extra_bit 
-SECED_set_extra_bit:
+    jmp secded_set_extra_bit 
+secded_set_extra_bit:
     xor dl, dh ; after calculating the parity of the higher and lower parts we xor them to get the pairy of the whole data
     cmp dl, 1 ; currently the bit is 0, we only need to change it if its 1    
-    je SECED_extra_bit_1        
+    je secded_extra_bit_1        
     mov extra_bit, 0
     popa ; if its not 1, we can exit from the procedure
     ret
-SECED_extra_bit_1:
+secded_extra_bit_1:
     mov extra_bit, 1
     popa
     ret
 endp validating_extra_bit   
     
-proc fixing_SECED_hamming
+proc fixing_secded_hamming
     pusha      
     ; there are four possible cases:
     ; 1. all bits are correct + extra parity correct --> no errors
@@ -1118,10 +1119,10 @@ case_2:
     ; fixing errror      
     mov ax, hamming_code
     mov fixed_hamming_code, ax
-    or fixed_hamming_code, extra_bit_mask ; flipping the error in the extra parity bit
-    call SECED_to_string  ; convert to string    
+    xor fixed_hamming_code, extra_bit_mask ; flipping the error in the extra parity bit
+    call secded_to_string  ; convert to string    
     ; print new hamming code
-    lea dx, fixed_SECED_string
+    lea dx, fixed_secded_string
     mov ah, 09h
     int 21h 
     ; printing --- line
@@ -1134,7 +1135,7 @@ case_2:
 case_3:    
     ; if both the extra parity is incorrect and another bit, it means that is a regular 1 bit error the we can correct  
     call fixing_error
-    call SECED_to_string   
+    call secded_to_string   
     
     ; printing wrong bit msg  
     ; diving parity bit by 10 in order to print two digit placment
@@ -1152,7 +1153,7 @@ case_3:
     int 21h
     
     ; printing the hamming code
-    lea dx, fixed_SECED_string
+    lea dx, fixed_secded_string
     mov ah, 09h
     int 21h    
     
@@ -1178,15 +1179,15 @@ no_error:
     popa
     ret         
     
-endp fixing_SECED_hamming   
+endp fixing_secded_hamming   
 
-proc SECED_to_string
+proc secded_to_string
     pusha
     ; after we fixed the error we the error we need to convert the fixed hamming code into a string
-    lea di, fixed_SECED_string
+    lea di, fixed_secded_string
     mov bx, fixed_hamming_code 
     mov cx, 16      
-convert_SECED:
+convert_secded:
     shl bx, 1 ; every time we shift the dup of the fixed hamming code and move back the result into the string
     jc carry_set1 ; if the carry flag is set then the current number is 1     
     jmp carry_not_set1
@@ -1197,8 +1198,8 @@ carry_not_set1:
     mov [di], '0';  if the carry flag is not set the current number is 0
 exit_string_convertion:
     inc di  
-    loop convert_SECED   
+    loop convert_secded   
     popa
     ret
-endp SECED_to_string
+endp secded_to_string
 end start ; set entry point and stop the assembler.
