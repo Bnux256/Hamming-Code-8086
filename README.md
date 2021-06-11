@@ -36,3 +36,8 @@ Normally, Hamming Codes can only correct a single error in the codeword, as it c
 <img align="center" src = "https://github.com/Bnux256/HammingCode-11-15--8086/blob/main/ProjectDiagram.png?raw=true">
 
 ## Reference Material
+[Hamming Code, Wikipedia.](https://en.wikipedia.org/wiki/Hamming_code)
+[Calculating and Correcting Hamming Codes. (1999). Florida International Univercity.](http://users.cs.fiu.edu/~downeyt/cop3402/hamming.html)
+[Chapter 5: Memory & Hamming/SECDED Codes, Intro to Computer Systems. (2014). RMIT Univercity.](https://www.dlsweb.rmit.edu.au/set/Courses/Content/CSIT/oua/cpt160/2014sp4/chapter/05/CodingSchemes.html)
+[Error Detecting and Error Correcting Codes. (1950). Richard Hamming, Bell Lab's Journal.](http://guest.engelschall.com/~sb/hamming/)
+[Hamming codes and error correction, (2020). 3Blue1Brown Youtube chanel.](https://www.youtube.com/watch?v=X8jsijhllIA&)
