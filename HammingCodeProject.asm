@@ -28,12 +28,12 @@ data segment
     output_msg db "Your 15 bit Hamming Code Is: $"
     string_output db 16 dup(?)  
     
-    line db 0Dh, 0Ah,"--------------------------------------------------------------------------------", '$'
+    line db 0Dh, 0Ah,"--------------------------------------------------------------------------------", '$'   
     
     ; Part 1A - Generating a 16 bit Hamming Code with an extra parity bit
     extra_bit_msg db "Do You Want An Extra Parity Bit? (SECDED Hamming Code) Enter Y/n: $"
     extra_bit_not_valid_msg db 0Dh, 0Ah,"Must Enter 'y' or 'n': $"
-    extra_bit_mask equ 1000000000000000b  
+    EXTRA_BIT_MASK equ 1000000000000000b  
     output_msg_extra_bit db "Your 16 bit Hamming Code Is: $"
     string_output_extra_bit db 17 dup(?)
     
@@ -74,12 +74,7 @@ start:
 
     ; add your code here    
      call welcome_msg ; printing welcome messages
-    ; call decoding_secded_hamming
-    ; to-do list               
-    ; add progress bar/msg/moving slash/ [**   ] 25%
-    ; part 1 - change jmp exit names   
-    ; Error in extra parity bit can't be corrected
-         
+          
     ; wait for any key....    
     mov ah, 1
     int 21h
@@ -122,7 +117,7 @@ proc welcome_msg
     lea dx, choice_not_valid_msg
     mov ah, 09h
     int 21h    
-    jmp welcome_msg ; print again welcome msg
+    call welcome_msg ; print again welcome msg
     
     popa
     ret
@@ -160,7 +155,7 @@ proc y/n_part1
     mov ah, 09h
     int 21h
     
-    jmp y/n_part1   
+    call y/n_part1   
     popa
     ret
 endp y/n_part1 
@@ -179,7 +174,7 @@ proc calculate_hamming_code
     call convert_to_string  
     call print_hamming_code  
     
-    jmp welcome_msg ; run again
+    call welcome_msg ; run again
     popa   
     ret
 endp calculate_hamming_code
@@ -249,8 +244,9 @@ proc not_valid
     mov ah, 09h
     int 21h
     
-    jmp calculate_hamming_code ; return to start of program because of the non_valid input
+    call calculate_hamming_code ; return to start of program because of the non_valid input
     
+    popa
 endp not_valid  
                            
 proc convert_input
@@ -303,21 +299,21 @@ proc calculate_parity_bit
     and bx, cur_mask
     or  bx, 0 ; seting the flags 
     jp part1_parity1 ; jumps if pf = 1  
-    mov dl, 0 ; else (pf is zero)  
+    mov dl, 0 ; else (pf is zero) - parity of first half 
     jmp calculating_secondPart 
 part1_parity1:    
-    mov dl, 1 
+    mov dl, 1 ; in dl --> parity of first half
     jmp calculating_secondPart
 calculating_secondPart:    
     mov bx, encoded_data ;creating a dup of encoded data
     and bx, cur_mask ; putting the mask 
     shr bx, 8 ; moving to right the dup of encoded_data  
     or bx, 0 ; setting the flags
-    jp part2_pairty1 ; jumps if pf = 1
-    mov dh, 0
+    jp part2_parity1 ; jumps if pf = 1
+    mov dh, 0 ; in dh --> parity of first half
     jmp combining_parity
-part2_pairty1:
-    mov dh, 1  
+part2_parity1:
+    mov dh, 1   ; in dh --> parity of first half
     jmp combining_parity 
 combining_parity:    
     xor dh, dl  ; parity bit is in dh 
@@ -325,10 +321,11 @@ combining_parity:
     ; if parity bit is 1 --> set the parity bit
     cmp dh, 1
     je set_parity
-    ; parity bit is 0
+    ; parity bit is 0 - no need to change it
     popa
     ret 
-set_parity:         
+set_parity:            
+    ; setting the parity bit to 1.
     mov ax, cur_setting_mask
     or encoded_data, ax
     popa
@@ -450,7 +447,7 @@ proc calculate_SECDED_code_extra_bit
     call convert_to_string_extra_bit
     call print_hamming_code_extra_bit     
     
-    jmp welcome_msg ; run again
+    call welcome_msg ; run again
      
     popa
     ret
@@ -471,7 +468,7 @@ not_1_1A:
     jne not_0_1A ; and not 0   
     jmp is1
 not_0_1A:
-    jmp not_valid_1A 
+    call not_valid_1A 
     popa
     ret       
 is1_1A:    
@@ -526,7 +523,7 @@ set_extra_bit:
     popa ; if its not 1, we can exit from the procedure
     ret
 extra_bit_1:
-    or encoded_data, extra_bit_mask   ; setting the parity bit in the var    
+    or encoded_data, EXTRA_BIT_MASK   ; setting the parity bit in the var    
     popa
     ret
 endp calculate_extra_parity    
@@ -598,7 +595,7 @@ proc fixing_hamming_code
     call validating_p4
     call printing_wrong_data_msg  
     
-    jmp welcome_msg ; run again
+    call welcome_msg ; run again
     popa  
     ret
 endp fixing_hamming_code 
@@ -624,7 +621,7 @@ proc y/n_part2
     je fixing_hamming_code
     
     ; if hasn't jumped it means that input isn't valid
-    ; now we print not valid msg and jmp back to y/n_part1
+    ; now we print not valid msg and jmp back to y/n_part2
     ; printing msg
     lea dx, extra_bit_not_valid_msg
     mov ah,09h
@@ -634,7 +631,7 @@ proc y/n_part2
     mov ah, 09h
     int 21h
     
-    jmp y/n_part1   
+    call y/n_part2  
     popa
     ret
 endp y/n_part2 
@@ -704,7 +701,7 @@ proc dig_not_valid
     mov ah, 09h
     int 21h
     
-    jmp fixing_hamming_code ; return to start of proc because of the non_valid input
+    call fixing_hamming_code ; return to start of proc because of the non_valid input
     
     popa
     ret
@@ -742,29 +739,29 @@ proc validating_parity_bit
     and bx, cur_mask
     or  bx, 0 ; seting the flags 
     jp part1__parity1 ; jumps if pf = 1  
-    mov dl, 0 ; else (pf is zero)  
+    mov dl, 0 ; else (pf is zero) in dl we put the lower parity 
     jmp calculating__secondPart 
 part1__parity1:    
-    mov dl, 1 
+    mov dl, 1  ; in dl we put the lower parity
     jmp calculating__secondPart
 calculating__secondPart:    
     mov bx, hamming_code ;creating a dup of encoded data
     and bx, cur_mask ; putting the mask 
     shr bx, 8 ; moving to right the dup of encoded_data  
     or bx, 0 ; setting the flags
-    jp part2__pairty1 ; jumps if pf = 1
-    mov dh, 0
+    jp part2__parity1 ; jumps if pf = 1
+    mov dh, 0  ; in dh we put the higher part parity
     jmp combining__parity
-part2__pairty1:
-    mov dh, 1  
+part2__parity1:
+    mov dh, 1   ; in dh we put the higher part parity
     jmp combining__parity 
 combining__parity:    
-    xor dh, dl  ; parity bit is in dh 
+    xor dh, dl  ; entire parity bit is in now dh 
     ; because we included the parity bit itself when calculating the new parity bit --> if its 0: its correct. if its 1: its incorrect
     ; now we check if the parity bit we calculated in dh is 1:
     cmp dh, 1
     je add_parity_pos
-    ; parity is correct
+    ; parity is correct - no need to change it
     popa
     ret 
 add_parity_pos:  ; parity wrong       
@@ -886,7 +883,7 @@ proc fixing_error
     cmp cl, 0 ; if cl is zero we don't need to shift at all, we will jump above in order to avoid an infinite loop
     jne shift_fix_error 
     mov ax, fix_error
-    xor fixed_hamming_code, ax ; xor of mask and hamming code
+    xor fixed_hamming_code, ax ; xor of mask and hamming code will flip the wrong bit
     popa
     ret ; if cx == 0 then we exit
     
@@ -942,7 +939,7 @@ proc decoding_secded_hamming
     
     ; call printing_wrong_data_msg  
     
-    jmp welcome_msg ; run again 
+    call welcome_msg ; run again 
     popa
     ret
 endp decoding_secded_hamming
@@ -1011,7 +1008,7 @@ proc secded_not_valid
     mov ah, 09h
     int 21h
     
-    jmp decoding_secded_hamming ; return to start of proc because of the non_valid input
+    call decoding_secded_hamming ; return to start of proc because of the non_valid input
     
     popa
     ret
@@ -1119,7 +1116,7 @@ case_2:
     ; fixing errror      
     mov ax, hamming_code
     mov fixed_hamming_code, ax
-    xor fixed_hamming_code, extra_bit_mask ; flipping the error in the extra parity bit
+    xor fixed_hamming_code, EXTRA_BIT_MASK ; flipping the error in the extra parity bit
     call secded_to_string  ; convert to string    
     ; print new hamming code
     lea dx, fixed_secded_string
