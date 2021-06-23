@@ -1,4 +1,4 @@
-# HammingCode-11-15--8086
+# (11,15) Hamming Code - 8086 Processor
 ## Calculating and fixing 15 bit Hamming Code + SECDED 16 bit Hamming Code with an extra parity bit. 
 ### Background Information
 <img align="right" width="180" height="240" src = "https://user-images.githubusercontent.com/80382873/121411089-ee33fc00-c96b-11eb-9e89-25ae1cc62645.jpg">
